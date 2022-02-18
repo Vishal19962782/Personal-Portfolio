@@ -13,17 +13,15 @@ const node = document.createElement("LI");
 submit.addEventListener('click',()=>{
     console.log("hi")
 })
-const regname=/^[a-zA-Z\s]*$/;
+const regname=/^[a-zA-Z][a-zA-Z\s]*$/;
 let regmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 console.log(vname);
 
-vname.addEventListener('input',()=>{
-    // console.log(vname.value.exec(regname))
-
+vname.addEventListener('input',()=>{  
 if(vname.value.match(regname) != vname.value )
 {   
   
-    error.textContent="Enter a proper name"
+    error.textContent="Please enter a valid name"
     check[0]=0;
 
 }
@@ -71,25 +69,16 @@ varea.addEventListener('input',()=>{
     }
     })
    
-
-
-// function fsubmit(){
-  
-//    if((check.reduce((sum,a)=>sum+a,0))==3)
-//    {
-//        console.log("ture")
-//     // form.submit();
-//     form.reset();
-//    }
-// }
-
+function isOne(element)
+{
+    return element===1;
+}
 
 
 // +++++++++++++AJAX+++++++++++++++++
 $("#cform").submit((e)=>{
     e.preventDefault()
-    
-    if((check.reduce((sum,a)=>sum+a,0))==3)
+    if(check.every(isOne))
    {    console.log("ture")
         $.ajax({
         url:"https://script.google.com/macros/s/AKfycbz6s1r6tzoth6u4UKJu8I0iAu3_zoqCMVIMdaqewzZCQ0zGqicHmi_6bbNO90TBcwPS/exec",
